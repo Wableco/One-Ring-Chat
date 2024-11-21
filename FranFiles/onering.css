@@ -1,0 +1,157 @@
+body{
+    background-image: url(./background.png);
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+    justify-items: center;
+}
+#nextbutton{
+    background-color: rgb(189, 28, 28);
+    color: #ffffff;
+    border-color: #ff1100;
+    width: 150px;
+    height: 50px;
+    font-size: 30px;
+    text-align: center;
+    border-radius: 10px;
+    margin-top: 70px;
+    box-shadow: 0px 0px 15px rgba(223, 188, 220, 0.733);
+    cursor: pointer;
+}
+
+#nextbutton:hover {
+    background-color: rgb(104, 10, 10); 
+    transform: scale(1.05);
+    border-color: #8d5151;
+}
+
+#chatcontainer{
+    background-color: rgb(74, 52, 128);
+    display: grid;
+    flex-direction: column;
+    gap: 10px;
+    width: 815px;
+    height: 520px;
+    border-radius: 20px;
+    z-index: 0;
+    margin-top: 20px;
+    box-sizing: border-box;
+    box-shadow: 0px 0px 40px rgba(0, 0, 0, 1);
+    border: 3px solid rgba(28, 5, 83, 0.178);
+
+}
+#chatbox{
+    position: relative;
+    background-color: rgb(215, 207, 236);
+    z-index: 1;
+    width: 750px;
+    height: 400px;
+    margin-top: 30px;
+    margin-left: 30px;
+    border-radius: 20px;
+    border-color: rgb(163, 136, 179);
+    box-shadow: 0px 0px 20px rgb(92, 68, 92);
+    overflow-y: scroll;
+    overflow-x: hidden;
+    font-size: large;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    text-indent: 2%;
+    
+}
+#chatbox::-webkit-scrollbar-thumb {
+    background-color: #6a0dad;
+    border-radius: 6px;
+    border: 3px solid #e0d4f3;
+  }
+
+#chatbox::-webkit-scrollbar-thumb:hover {
+    background-color: #2d074d;
+  }
+
+#grid-text{
+    display: flex;
+    margin-top: -20px;
+    z-index: 1;
+}
+#emoji-button{
+    width: 50px;
+    height: 50px;
+    margin-left: 5px;
+    z-index: 2;
+    padding: 10px 20px;
+    background-color: #4caf4f00; 
+    color: white; 
+    border: none; 
+    border-radius: 5px; 
+    cursor: pointer; 
+    font-size: 40px;
+    margin-top: -40px;
+}
+
+#emoji-button:hover {
+    transform: scale(1.05);
+}
+#text{
+    position: relative;
+    width: 590px;
+    height: 50px;
+    z-index: 2;
+    cursor: text;
+    border-radius: 10px;
+    margin-top: -30px;
+    margin-left: 35px;
+    font-size: 20px;
+    box-shadow: 0px 0px 10px rgb(122, 84, 129);
+    background-color: rgb(215, 207, 236);;
+
+}
+#send{
+    width: 70px;
+    height: 45px;
+    margin-left: 20px;
+    z-index: 2;
+    cursor: pointer;
+    background-color: green;
+    color: white;
+    border-radius: 10px;
+    padding: 1px;
+    margin-top: -25px;
+    font-size: 20px;
+}
+#send:hover {
+    background-color: rgb(2, 104, 2); /* Cor de hover */
+    transform: scale(1.05);
+}
+
+#containerEmojis{
+    display: grid;
+    flex-direction: row;
+    width: 100px;
+    height: 30px;
+    background-color: white;
+    z-index: 6;
+    bottom: 40px;
+    margin-left: 10px;
+}
+.emojis {
+    display: none; /* Inicialmente escondido */
+    margin-top: 10px;
+    z-index: 6;
+}
+.emojis button{
+    margin-left: 5px;
+    cursor: pointer; 
+    font-size: 5px;
+    margin-top: -40px;
+    z-index: 6;
+  }
+
+footer {
+    position: fixed; /* Fixa no fim da página */
+    bottom: 0; /* Alinha ao fundo */
+    background-color: none; /* Fundo transparente */
+    color: #ffffff; /* Cor do texto */
+    padding: 10px 20px; /* Espaçamento interno */
+    text-align: right; /* Texto alinhado à direita */
+    width: 100%; /* Largura total */
+}

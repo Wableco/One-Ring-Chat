@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./onering.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/emoji-mart/css/emoji-mart.css">
+    <title>OneRing Chat</title>
+</head>
+
+<body>
+    <button id="nextbutton" class="nextbutton" onclick="next()">Next</button><br>
+    <div id="chatcontainer">
+        <div id="chatbox"></div> <br>
+        <div id="grid-text">
+            <button id="emoji-button" onclick="emojiButton()">&#128526;
+            </button>
+            <input type="text" name="textbox" id="text" maxlength="70">
+            <button id="send" onclick="send()">Send</button>
+            <div id="containerEmoji" class="emojis">
+              </div>
+        </div>
+    </div>
+    <footer>
+        &copy; OneRing - Todos os direitos reservados. 2024.
+    </footer>
+    <script src="./onering.js" type="text/javascript"></script>
+
+</body>
+
+</html>
