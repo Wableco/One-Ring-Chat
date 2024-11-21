@@ -27,10 +27,6 @@ ws.on("disconnected", (msg) => {
 // // metodo para fechar a conexão
 // ws.close()
 
-ws.on("rooms", (msg) => {
-  console.log(msg);
-});
-
 process.stdin.on("data", (data: Buffer) => {
   let cmd = data.toString();
 

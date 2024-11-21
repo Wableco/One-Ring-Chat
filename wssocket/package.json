@@ -14,7 +14,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "socket.io": "^4.8.1"
+    "socket.io": "^4.8.1",
+    "wssocket": "file:"
   },
   "devDependencies": {
     "@types/socket.io": "^3.0.2",

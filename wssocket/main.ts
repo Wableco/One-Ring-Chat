@@ -1,5 +1,5 @@
 import { Server, Socket } from "socket.io";
-import { IRoom, findAvailableRoom, findRoom, joinRoom } from "./utils";
+import { IRoom, findRoom, joinRoom } from "./utils";
 
 const ws = new Server(3000);
 
@@ -35,7 +35,7 @@ ws.on("connection", (ws: Socket) => {
   });
 
   ws.on("rooms", () => {
-    ws.emit("rooms", rooms);
+    console.log(rooms)
   });
 
   ws.on("nextRoom", () => {
