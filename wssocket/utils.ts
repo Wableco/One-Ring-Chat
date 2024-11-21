@@ -28,11 +28,9 @@ export const findRoom = (id: string) => (element: IRoom) =>
 
 export const joinRoom = (rooms: Array<IRoom>, ws: Socket) => (msg: { username: string; }) => {
   //Busca uma sala disponivel
-  console.log("buscando sala");
   const room = rooms.find(findAvailableRoom);
   //Entra em uma sala disponivel
   if (room) {
-    console.log("entrando na sala!");
     ws.join(`${room.id}`);
     let index = rooms.find((element) => element.id === room.id);
     if (index) {
@@ -51,7 +49,6 @@ export const joinRoom = (rooms: Array<IRoom>, ws: Socket) => (msg: { username: s
   }
   //Cria uma sala
   else {
-    console.log("criando uma sala!");
     rooms.sort((a, b) => a.id - b.id);
 
     let id = rooms.map((element, index) => {
@@ -76,6 +73,5 @@ export const joinRoom = (rooms: Array<IRoom>, ws: Socket) => (msg: { username: s
     rooms.push({ ...room });
     ws.join(`${id}`);
     ws.emit("joinRoom", { message: "Bem vindo a nova Sala!", roomID: id[0] });
-    console.log(rooms);
   }
 }

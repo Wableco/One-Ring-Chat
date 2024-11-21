@@ -20,7 +20,6 @@ let rooms: Array<IRoom> = [
 ];
 
 ws.on("connection", (ws: Socket) => {
-  console.log("usuario conectado");
   ws.emit("connection", { message: "Você conectou ao servidor WebSocket" });
 
   ws.on("joinRoom", joinRoom(rooms, ws));
@@ -71,12 +70,10 @@ ws.on("connection", (ws: Socket) => {
         rooms.splice(index, 1);
       }
 
-      console.log(ws.rooms);
     }
   });
 
   ws.on("disconnect", (msg) => {
-    console.log("disconectado");
     let room = rooms.find(
       (element) =>
         element.person1.userID === ws.id || element.person2.userID === ws.id
@@ -112,6 +109,7 @@ ws.on("connection", (ws: Socket) => {
       }
     }
 
-    console.log(room);
   });
 });
+
+console.log("############-initiated-############")
