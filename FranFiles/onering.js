@@ -7,8 +7,12 @@ document.addEventListener("DOMContentLoaded", function () {
   const emojiButton = document.getElementById("emoji-button");
   const emojiBox = document.getElementById("emoji-box");
 
-  // Gera nome de usuário aleatório
+  // Lista de cores 
+  const colors = ["red", "blue", "purple", "green", "orange", "brown", "cian", "grey21", "MediumBlue", "Teal","DarkOliveGreen", "DarkMagenta", "DeepPink", "Crimson"];
+
+  // Variáveis
   let userName = null;
+  let userColor = null; // Cor do usuário (um valor será selecionado a cada novo nome de usuário)
 
   // Configuração inicial do botão "Next" e placeholder
   nextButton.textContent = "Connect";
@@ -21,6 +25,7 @@ document.addEventListener("DOMContentLoaded", function () {
   nextButton.addEventListener("click", function () {
     if (!userName) {
       userName = `user${Math.floor(1000 + Math.random() * 9000)}`; // Gera o nome de usuário
+      userColor = colors[Math.floor(Math.random() * colors.length)]; // Seleciona uma cor aleatória da lista
       textInput.placeholder = "Diga Olá!";
       nextButton.textContent = "Next";
       textInput.disabled = false; // Habilita o campo de texto após clicar em Next
@@ -35,6 +40,9 @@ document.addEventListener("DOMContentLoaded", function () {
       // Cria um novo elemento de mensagem
       const newMessage = document.createElement("p");
       newMessage.innerText = `${userName}: ${texto}`;
+
+      // Altera a cor do texto da mensagem
+      newMessage.style.color = userColor;
 
       // Adiciona a mensagem ao chatbox
       chatbox.appendChild(newMessage);
