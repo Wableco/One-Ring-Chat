@@ -51,7 +51,40 @@ function next() {
     let nextRoom = 'nextRoom';  // A string 'nextRoom' é atribuída à variável nextRoom
 }
 
-//Adicionar função para mostrar a seleção de emojis.
-function emojiButton(){
 
-}
+document.addEventListener("DOMContentLoaded", function () {
+  // Obtendo os elementos pelo ID
+  const emojiButton = document.getElementById("emoji-button");
+  const emojiBox = document.getElementById("emoji-box");
+  const textInput = document.getElementById("text");
+
+  // Verificação de existência dos elementos
+  if (!emojiButton || !emojiBox || !textInput) {
+      console.error("Um ou mais elementos não foram encontrados no DOM.");
+      return;
+  }
+
+  // Alternar visibilidade do emojiBox ao clicar no emojiButton
+  emojiButton.addEventListener("click", (event) => {
+      event.stopPropagation(); // Impede que o clique no botão feche o emojiBox
+      emojiBox.classList.toggle("hidden");
+  });
+
+  // Fechar o emojiBox ao clicar fora dele
+  document.addEventListener("click", () => {
+      emojiBox.classList.add("hidden");
+  });
+
+  // Evitar que cliques dentro do emojiBox fechem a caixa
+  emojiBox.addEventListener("click", (event) => {
+      event.stopPropagation(); // Impede o clique na caixa de fechar
+  });
+
+  // Adicionar emoji ao campo de texto ao clicar nele
+  emojiBox.addEventListener("click", (event) => {
+      if (event.target.classList.contains("emoji")) {
+          const emoji = event.target.textContent; // Captura o texto do emoji clicado
+          textInput.value += emoji; // Adiciona o emoji ao campo de texto
+      }
+  });
+});
