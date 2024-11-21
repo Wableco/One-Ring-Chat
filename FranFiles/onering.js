@@ -20,6 +20,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Inicialmente, desabilita o campo de texto
   textInput.disabled = true;
+  emojiButton.disabled = true; // Desabilita o botão de emoji até o "Next" ser clicado
 
   // Evento ao clicar no botão "Next" para gerar o nome de usuário e habilitar o campo de texto
   nextButton.addEventListener("click", function () {
@@ -30,6 +31,7 @@ document.addEventListener("DOMContentLoaded", function () {
       nextButton.textContent = "Next";
       textInput.disabled = false; // Habilita o campo de texto após clicar em Next
     }
+
   });
 
   // Função para enviar mensagens
@@ -49,6 +51,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
       // Limpa o campo de texto
       textInput.value = "";
+      emojiButton.disabled = false;
     }
   });
 
