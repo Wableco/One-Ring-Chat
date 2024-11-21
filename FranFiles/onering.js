@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // Troca o texto do botão para "Connect"
     nextButton.textContent = "Connect";
     // Define o placeholder do campo de entrada
-    placeholder.placeholder = "Conecte-se para iniciar o chat";
+    placeholder.placeholder = "Conecte-se para iniciar o chat.";
   
     // Adiciona um evento de clique no botão
     nextButton.addEventListener("click", function () {
