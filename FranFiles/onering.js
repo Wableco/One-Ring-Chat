@@ -74,3 +74,8 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 });
+
+// A variável recebe uma string chamada 'nextRoom' quando o botão "next" for clicado
+function next() {
+  let nextRoom = "nextRoom"; // A string 'nextRoom' é atribuída à variável nextRoom
+}
