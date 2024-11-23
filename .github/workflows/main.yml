@@ -30,7 +30,7 @@ jobs:
       working-directory: ./wssocket
 
     - name: Building WS socket
-      run: npm build
+      run: npm run build
       working-directory: ./wssocket
       
     - name: initializing WS socket
@@ -42,7 +42,7 @@ jobs:
       working-directory: ./Front
 
     - name: Building FrontEnd
-      run: npm build
+      run: npm run build
       working-directory: ./wssocket
       
     - name: initializing FrontEnd
