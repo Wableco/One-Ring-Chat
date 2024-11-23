@@ -1,0 +1,50 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout the code
+      uses: actions/checkout@v3  # Obtém o código do repositório
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '18'      # Define a versão do Node.js necessária
+        cache: 'npm'            # Habilita cache para dependências (npm)
+
+    - name: Install dependencies ng dependecies
+      run: npm install
+    
+    - name: Instalation of WS socket
+      run: npm i
+      working-directory: ./wssocket
+
+    - name: Building WS socket
+      run: npm build
+      working-directory: ./wssocket
+      
+    - name: initializing WS socket
+      run: npm start
+      working-directory: ./wssocket
+
+    - name: Preparing instalation of FrontEnd
+      run: npm i
+      working-directory: ./Front
+
+    - name: Building FrontEnd
+      run: npm build
+      working-directory: ./wssocket
+      
+    - name: initializing FrontEnd
+      run: npm start
+      working-directory: ./wssocket
