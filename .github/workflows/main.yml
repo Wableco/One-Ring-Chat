@@ -43,6 +43,7 @@ jobs:
   
   Start-Servers:
     runs-on: ubuntu-latest
+    needs: installation-and-build
 
     steps:
     - name: initializing WS socket
