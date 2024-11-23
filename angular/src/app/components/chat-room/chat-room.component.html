@@ -1,1 +1,57 @@
-<p>chat-room works!</p>
+<main>
+  <!-- Botão de conexão -->
+  <button id="nextbutton" class="nextbutton" (click)="connect()" [disabled]="isConnected">
+    {{ isConnected ? 'Next' : 'Connect' }}
+  </button>
+  <br />
+
+  <!-- Contêiner do chat -->
+  <div id="chatcontainer">
+    <div id="chatbox" #chatbox class="chatbox"></div>
+    <br />
+
+    <!-- Área de entrada de texto e emojis -->
+    <div id="grid-text">
+      <div class="contemoji">
+        <!-- Botão para exibir emojis -->
+        <button id="emoji-button" (click)="toggleEmojiBox()" [disabled]="!isConnected">
+          &#128526;
+        </button>
+
+        <!-- Caixa de emojis -->
+        <div id="emoji-box" #emojiBox class="emoji-box" [class.hidden]="!emojiBoxVisible">
+          <span
+            *ngFor="let emoji of emojis"
+            class="emoji"
+            (click)="addEmoji(emoji)"
+          >
+            {{ emoji }}
+          </span>
+        </div>
+      </div>
+
+      <!-- Campo de texto -->
+      <input
+        type="text"
+        name="textbox"
+        id="text"
+        maxlength="70"
+        [(ngModel)]="newMessage"
+        [placeholder]="isConnected ? 'Diga Olá!' : 'Conecte-se para iniciar o chat.'"
+        [disabled]="!isConnected"
+      />
+
+      <!-- Botão de envio -->
+      <button id="send" (click)="sendMessage()" [disabled]="!isConnected">
+        Send
+      </button>
+    </div>
+  </div>
+
+  <!-- Rodapé -->
+  <footer>
+    &copy; OneRing - Todos os direitos reservados - 2024.
+  </footer>
+</main>
+
+
