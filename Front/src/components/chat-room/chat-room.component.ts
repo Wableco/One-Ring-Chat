@@ -3,7 +3,6 @@ import { SocketService } from '../../services/socket.service';
 import { CommonModule } from '@angular/common';
 import { FormsModule} from '@angular/forms';
 
-
 @Component({
   selector: 'router-outlet',
   standalone: true,
@@ -33,7 +32,7 @@ export class ChatRoomComponent implements OnInit {
     this.webSocket.connect();
 
     // Escuta mensagens do servidor
-    this.webSocket.on('message', (data: string) => {
+    this.webSocket.on('connection', (data: string) => {
       this.addMessageToChatbox(data, this.userColor || 'black');
     });
   }

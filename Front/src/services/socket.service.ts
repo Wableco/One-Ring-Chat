@@ -20,7 +20,7 @@ export class SocketService {
     this.ws.emit(eventName, data);
   }
 
-  /** Abre um "listener" / como se fosse um ouvinto
+  /** Abre um "listener" / como se fosse um ouvinte
    * @param eventName o Evento que precisa ouvir que será vindo do servidor
    * @function callback seria uma Arrow function ()=>{} que será executada. (ex: transformar dados de acordo com o que foi recebido)
    */
