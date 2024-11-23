@@ -22,35 +22,102 @@ jobs:
         node-version: '18'      # Define a versão do Node.js necessária
         cache: 'npm'            # Habilita cache para dependências (npm)
 
+      # INSTALAÇÃO DO ANGULAR
     - name: Install dependencies ng dependecies
       run: npm install
+
+    - name: Salvar artefatos - NG
+      uses: actions/upload-artifact@v3
+      with:
+        name: modulesng
+        path: ./node_modules 
     
+      # INSTALAÇÃO DO WS
     - name: Instalation of WS socket
       run: npm i
       working-directory: ./wssocket
+
+    - name: Salvar artefatos - WS
+      uses: actions/upload-artifact@v3
+      with:
+        name: modulesWS
+        path: ./wssocket/node_modules
 
     - name: Building WS socket
       run: npm run build
       working-directory: ./wssocket
 
+    - name: Salvar Build - WS
+      uses: actions/upload-artifact@v3
+      with:
+        name: distWS
+        path: ./wssocket/dist
+
+      # INSTALAÇÃO DO FRONT-END
     - name: Preparing instalation of FrontEnd
       run: npm i
       working-directory: ./Front
 
+    - name: Salvar artefatos - Front
+      uses: actions/upload-artifact@v3
+      with:
+        name: modulesFront
+        path: ./Front/node_modules
+
     - name: Building FrontEnd
       run: npm run build
-      working-directory: ./wssocket
+      working-directory: ./Front
+
+    - name: Salvar Build - Front
+      uses: actions/upload-artifact@v3
+      with:
+        name: distFront
+        path: ./Front/dist
   
   Start-Servers:
     runs-on: ubuntu-latest
     needs: installation-and-build
 
     steps:
-    - name: initializing WS socket
-      run: npm start
-      working-directory: ./wssocket
-    
-    - name: initializing FrontEnd
-      run: npm start
-      working-directory: ./wssocket
 
+      # INICIALIZANDO artefatos
+    - name: Baixando modules WS
+      uses: actions/download-artifact@v3
+      with:
+        name: modulesWS
+        path: ./wssocket/node_modules
+
+    - name: Baixando Dist WS
+      uses: actions/download-artifact@v3
+      with:
+        name: distWS
+        path: ./wssocket/dist
+
+    - name: Baixando modules Front
+      uses: actions/download-artifact@v3
+      with:
+        name: modulesFront
+        path: ./Front/node_modules
+
+    - name: Baixando dist Front
+      uses: actions/download-artifact@v3
+      with:
+        name: distFront
+        path: ./Front/dist
+
+    - name: Baixando modules NG
+      uses: actions/download-artifact@v3
+      with:
+        name: modules_ng
+        path: ./node_modules
+
+      # INICIALIZANDO Websocket
+    - name: initializing WS socket
+      run: |
+        cd ./wssocket &&
+        npm start &
+
+        cd ./Front &&
+        npm start &
+
+        sleep 30
