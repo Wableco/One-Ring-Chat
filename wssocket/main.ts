@@ -20,7 +20,6 @@ let rooms: Array<IRoom> = [
 ];
 
 ws.on("connection", (ws: Socket) => {
-  console.log('alguem conectou')
   ws.emit("connection", { message: "Você conectou ao servidor WebSocket" });
 
   ws.on("joinRoom", joinRoom(rooms, ws));

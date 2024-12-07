@@ -29,6 +29,7 @@ export const findRoom = (id: string) => (element: IRoom) =>
 export const joinRoom = (rooms: Array<IRoom>, ws: Socket) => (msg: { username: string; }) => {
   //Busca uma sala disponivel
   const room = rooms.find(findAvailableRoom);
+  let user
   //Entra em uma sala disponivel
   if (room) {
     ws.join(`${room.id}`);
@@ -37,15 +38,17 @@ export const joinRoom = (rooms: Array<IRoom>, ws: Socket) => (msg: { username: s
       if (index.person1.status === 1) {
         index.person1.status = 0;
         index.person1.name = msg.username;
+        user = msg.username
         index.person1.userID = ws.id;
       } else {
         index.person2.status = 0;
         index.person2.name = msg.username;
+        user = msg.username
         index.person2.userID = ws.id;
       }
     }
 
-    ws.to(`${room.id}`).emit("joinRoom", { message: "Usuario conectado!", roomID: room.id });
+    ws.to(`${room.id}`).emit("joinRoom", { message: `${user} acabou de entrar no chat!!! \n diga olá para ele...`, roomID: room.id });
   }
   //Cria uma sala
   else {
